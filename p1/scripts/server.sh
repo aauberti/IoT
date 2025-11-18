@@ -11,11 +11,6 @@ curl -sfL https://get.k3s.io | sudo sh -s - \
 	--flannel-iface=$IFACE \
 	--write-kubeconfig-mode 644
 
-
-until [ -f /var/lib/rancher/k3s/server/node-token ]; do
-	sleep 3
-done
-
 sudo cat /var/lib/rancher/k3s/server/node-token > /vagrant/k3s-token
  
 echo "alias k='kubectl'" >> /home/vagrant/.bashrc
