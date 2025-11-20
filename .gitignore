@@ -1,3 +1,4 @@
 */.vagrant
 */k3s-token
-*.log
+*/*.log
+p3/kubectl*
