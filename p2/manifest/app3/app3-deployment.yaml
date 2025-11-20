@@ -15,6 +15,14 @@ spec:
       containers:
         - name: app3
           image: hashicorp/http-echo:1.0
-          args: ["-text=Hello from app 3"]
+          args:
+            - "-listen=:5678"
+            - "-text=Hello from app3\nPod:  $(POD_NAME)"
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+
           ports:
             - containerPort: 5678
