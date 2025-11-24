@@ -39,6 +39,15 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 rm kubectl
 
+## ArgoCD Installation
+echo "\n$BLUE#########################"
+echo "## ARGOCD INSTALLATION ##"
+echo "#########################$RESET\n"
+curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+rm argocd-linux-amd64
+
+
 ## Verification
 echo "\n$BLUE########################"
 echo "## SETUP VERIFICATION ##"
@@ -46,3 +55,4 @@ echo "########################$RESET\n"
 docker --version
 k3d --version
 kubectl version --client
+argocd version
