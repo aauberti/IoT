@@ -2,13 +2,13 @@
 
 curl -sfL https://get.k3s.io | sudo sh -s - --node-ip=192.168.56.110 --write-kubeconfig-mode 664
 
-kubectl apply -f /vagrant/manifest/app1/app1-deployment.yaml
-kubectl apply -f /vagrant/manifest/app1/app1-service.yaml
-kubectl apply -f /vagrant/manifest/app2/app2-deployment.yaml
-kubectl apply -f /vagrant/manifest/app2/app2-service.yaml
-kubectl apply -f /vagrant/manifest/app3/app3-deployment.yaml
-kubectl apply -f /vagrant/manifest/app3/app3-service.yaml
-kubectl apply -f /vagrant/manifest/ingress.yaml
+kubectl apply -f /vagrant/confs/app1/app1-deployment.yaml
+kubectl apply -f /vagrant/confs/app1/app1-service.yaml
+kubectl apply -f /vagrant/confs/app2/app2-deployment.yaml
+kubectl apply -f /vagrant/confs/app2/app2-service.yaml
+kubectl apply -f /vagrant/confs/app3/app3-deployment.yaml
+kubectl apply -f /vagrant/confs/app3/app3-service.yaml
+kubectl apply -f /vagrant/confs/ingress.yaml
 
 echo "alias k='kubectl'" >> /home/vagrant/.bashrc
 sudo chown vagrant:vagrant /home/vagrant/.bashrc
