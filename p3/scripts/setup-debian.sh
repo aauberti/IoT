@@ -55,4 +55,4 @@ echo "########################$RESET\n"
 docker --version
 k3d --version
 kubectl version --client
-argocd version
+argocd version 2>&1 | head -n 1
