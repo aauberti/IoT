@@ -2,3 +2,4 @@
 */k3s-token
 */*.log
 p3/kubectl*
+*.swp
