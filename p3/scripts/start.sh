@@ -4,8 +4,8 @@ set -e
 
 # CLean previous launch and Create Inital k3d cluster
 pkill -f "kubectl port-forward svc/argocd-server" || true
-k3d cluster delete iot-p3
-k3d cluster create iot-p3
+k3d cluster delete iot
+k3d cluster create iot
 
 # Set namespaces
 kubectl create namespace argocd
