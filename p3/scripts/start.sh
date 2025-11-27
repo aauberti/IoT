@@ -7,9 +7,18 @@ pkill -f "kubectl port-forward svc/argocd-server" || true
 k3d cluster delete iot-p3
 k3d cluster create iot-p3
 
-# Set an argocd namespace and install argocd
+# Set namespaces
 kubectl create namespace argocd
 kubectl create namespace dev
+
+# Handle docker limit pull rate
+kubectl create secret docker-registry regcred --from-file=.dockerconfigjson=$HOME/.docker/config.json -n default
+kubectl create secret docker-registry regcred --from-file=.dockerconfigjson=$HOME/.docker/config.json -n dev
+kubectl create secret docker-registry regcred --from-file=.dockerconfigjson=$HOME/.docker/config.json -n argocd
+kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"regcred"}]}' -n dev
+kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"regcred"}]}' -n argocd
+
+# Install Argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 # Set port forwarding
