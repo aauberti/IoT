@@ -20,8 +20,44 @@ gitlab:
   webservice:
     minReplicas: 1
     maxReplicas: 1
+    
+    workhorse:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100M
+        limits:
+          cpu: 200m
+          memory: 200M  
   
   sidekiq:
+    minReplicas: 1
+    maxReplicas: 1
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 600M
+      limits:
+        cpu: 100m
+        memory: 800M
+
+  gitaly:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 500M
+      limits:
+        cpu: 100m
+        memory: 500M
+
+  gitlab-shell:
+    minReplicas: 1
+    maxReplicas: 1
+ 
+registry:
+  hpa:
+    enabled: false
     minReplicas: 1
     maxReplicas: 1
 
