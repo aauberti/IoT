@@ -9,10 +9,8 @@ echo "127.0.0.1 gitlab.${GITLAB_DOMAIN}" | sudo tee -a /etc/hosts
 echo "127.0.0.1 registry.${GITLAB_DOMAIN}" | sudo tee -a /etc/hosts
 echo "127.0.0.1 minio.${GITLAB_DOMAIN}" | sudo tee -a /etc/hosts
 
-
 ## Intall Helm
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash
-
 
 ## Set the namespace
 kubectl create namespace gitlab
@@ -26,14 +24,16 @@ helm repo add gitlab https://charts.gitlab.io/
 helm repo update
 helm upgrade --install gitlab gitlab/gitlab \
   -n gitlab \
-  -f https://gitlab.com/gitlab-org/charts/gitlab/raw/master/examples/values-minikube-minimum.yam \
-  --timeout 900s \
+  -f bonus/gitlab-values.yaml \
+  --timeout 1200s \
   --set global.hosts.domain=${GITLAB_DOMAIN} \
   --set global.hosts.externalIP=127.0.0.1 \
-  --set global.hosts.hhtps=false
+  --set global.hosts.https=false
 kubectl wait --for=condition=ready --timeout=1200s pod -l app=webservice -n gitlab
 
 ## Get password
 GITLAB_PSSWD=$(kubectl get secret gitlab-gitlab-initial-root-password -n gitlab -ojsonpath='{.data.password}' | base64 -d)
 echo $GITLAB_PSSWD > gitlab-password.txt
 
+## Ready Message
+echo "Gitlab server is running. You can set port forwarding with kubectl port-forward svc/gitlab-webservice-default -n gitlab 8181:8181"

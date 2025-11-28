@@ -1,0 +1,34 @@
+global:
+  hosts:
+    domain: k3d.local
+    https: false
+  
+  ingress:
+    class: traefik
+    configureCertmanager: false
+
+nginx-ingress:
+  enabled: false
+
+prometheus:
+  install: false
+
+gitlab-runner:
+  install: false
+
+gitlab:
+  webservice:
+    minReplicas: 1
+    maxReplicas: 1
+  
+  sidekiq:
+    minReplicas: 1
+    maxReplicas: 1
+
+postgresql:
+  metrics:
+    enabled: false
+
+redis:
+  metrics:
+    enabled: false

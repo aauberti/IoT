@@ -3,3 +3,4 @@
 */*.log
 p3/kubectl*
 *.swp
+*password*
