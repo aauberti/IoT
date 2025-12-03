@@ -3,7 +3,40 @@
 ## Project Overview
 > Inception-of-Things is a post-CC 42 project that aims to introduce you to get started in Kubernetes. It's a way to learn how to set up a personal virtual machine with Vagrant, to discover how K3s works and how a Continuous Deployment can be set with ArgoCd. 
 
--> add a tree picture
+```
+.
+├── bonus
+│   ├── conf
+│   │   └── gitlab-values.yaml
+│   └── scripts
+│       ├── install.sh
+│       └── update.sh
+├── p1
+│   ├── scripts
+│   │   ├── server.sh
+│   │   └── worker.sh
+│   └── Vagrantfile
+├── p2
+│   ├── confs
+│   │   ├── app1
+│   │   │   ├── app1-deployment.yaml
+│   │   │   └── app1-service.yaml
+│   │   ├── app2
+│   │   │   ├── app2-deployment.yaml
+│   │   │   └── app2-service.yaml
+│   │   ├── app3
+│   │   │   ├── app3-deployment.yaml
+│   │   │   └── app3-service.yaml
+│   │   └── ingress.yaml
+│   ├── scripts
+│   │   ├── hosts.sh
+│   │   └── provision.sh
+│   └── Vagrantfile
+└── p3
+    └── scripts
+        ├── setup-debian.sh
+        └── start.sh
+```
 
 ### 💻 Part 1 - K3s and Vagrant
 This first step is an Introduction to K3s and Vagrant with a two nodes clutser: A Server machine `antauberS` and a Worker `antauberSW`.
@@ -76,7 +109,7 @@ The test manipulation is identical to the part3, we need to connect to the `http
 - [Kubectl official documentation](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/)
 - [GitLab/Helm Chart official documentation](https://docs.gitlab.com/charts/)
 - A very complete french blog about DevOps Stacks made by [Stephan Robert](https://blog.stephane-robert.info/)
-- reddit source to main/master error
+- [ArgoCD Subreddit](https://www.reddit.com/r/ArgoCD/comments/1ift3wo/argocd_cannot_connect_to_private_gitlab_registry/) gave us a clue about the main/master error
 
 ## 👥 Credits
 - [aauberti](https://github.com/aauberti)
