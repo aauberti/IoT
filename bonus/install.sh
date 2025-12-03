@@ -29,8 +29,6 @@ helm upgrade --install gitlab gitlab/gitlab \
   --set global.hosts.domain=${GITLAB_DOMAIN} \
   --set global.hosts.externalIP=127.0.0.1 \
   --set global.hosts.https=false \
-  --set certmanager.enabled=false \
-  --set kas.enabled=false
 kubectl wait --for=condition=ready --timeout=1200s pod -l app=webservice -n gitlab
 
 ## Get password
@@ -38,4 +36,4 @@ GITLAB_PSSWD=$(kubectl get secret gitlab-gitlab-initial-root-password -n gitlab 
 echo $GITLAB_PSSWD > gitlab-password.txt
 
 ## Ready Message
-echo "Gitlab server is running. You can set port forwarding with kubectl port-forward svc/gitlab-webservice-default -n gitlab 8181:8181"
+echo "Gitlab server is running. Launch update.sh script to add a a new repository to argocd"
