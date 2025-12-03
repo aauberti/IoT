@@ -25,8 +25,11 @@ We can test our machine with a `vagrant ssh` connection and a `kubectl get nodes
 ### ☸️ Part 2 - k3s and three simple applications
 This second step is a simple K3s architecture with 3 differents applications (assigned to differents HOST, and set to the `app3.com` by default).
 
-![Part 2 Overview](.readme_assets/p2_scheme.png)
-*Simple diagram of the Part2 Architecture*
+<p align="center">
+  <img src=".readme_assets/p2_scheme.png" alt="Part 2 Overview">
+  <br>
+  <em>Simple diagram of the Part2 Architecture</em>
+</p>
 
 We choose the same OS release for efficient reasons. We add a K3s cluster on our VM, and apply our differents manifests. Each app has its own deployment and service manifest and the `ingress.yaml` handle the HTTP and HTTPS routes from outside the cluster to services within the cluster (Traefik Ingress by default).
 
