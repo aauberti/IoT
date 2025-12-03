@@ -88,7 +88,7 @@ After adding our [resources repository](https://github.com/aauberti/IoT-Manifest
 #### How to test it
 We can check the component defined in the `argocd` and `dev` namespaces with `kubectl get pods -n <namespace>`.
 After we made a port-forwarding with `kubectl port-forward deployment/wil -n dev 8888:8888` we can access our app at `http://localhost:8888`.
-If we try modify our image version on our manifets, we can connect to ArgoCd (`https://localhost:8080`) with `admin:Qwerty12345` and saw our app is sync.
+If we try to modify our image version in our manifets, we can connect to ArgoCd (`https://localhost:8080`) with `admin:Qwerty12345` and saw our app is sync.
 
 ---
 ### 🦊 Bonus Part - K3s and Gitlab
