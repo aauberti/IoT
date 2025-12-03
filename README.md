@@ -8,6 +8,7 @@
 ### 💻 Part 1 - K3s and Vagrant
 This first step is an Introduction to K3s and Vagrant with a two nodes clutser: A Server machine `antauberS` and a Worker `antauberSW`.
 We follow this basic architecture defined in the K3s Documentation:
+
 ![K3S Overview](.readme_assets/k3s_overview.png)
 *The basic K3s Architecture*
 
@@ -23,6 +24,7 @@ We can test our machine with a `vagrant ssh` connection and a `kubectl get nodes
 ---
 ### ☸️ Part 2 - k3s and three simple applications
 This second step is a simple K3s architecture with 3 differents applications (assigned to differents HOST, and set to the `app3.com` by default).
+
 ![Part 2 Overview](.readme_assets/p2_scheme.png)
 *Simple diagram of the Part2 Architecture*
 
