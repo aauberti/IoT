@@ -24,7 +24,7 @@ helm repo add gitlab https://charts.gitlab.io/
 helm repo update
 helm upgrade --install gitlab gitlab/gitlab \
   -n gitlab \
-  -f bonus/gitlab-values.yaml \
+  -f conf/gitlab-values.yaml \
   --timeout 1200s \
   --set global.hosts.domain=${GITLAB_DOMAIN} \
   --set global.hosts.externalIP=127.0.0.1 \

@@ -21,8 +21,8 @@ git clone https://github.com/aauberti/IoT-Manifest_p3
 mkdir $GITLAB_REPO && cd $GITLAB_REPO
 cp ../IoT-Manifest_p3/*.yaml .
 git init --initial-branch=main
-git config user.email "admin@k3d.local"
-git config user.name "Administrator"
+git config --local user.email "admin@k3d.local"
+git config --local user.name "Administrator"
 git add .
 git commit -m "Chore: copy repo from Github"
 git remote add origin http://root:${GITLAB_PASSWORD}@gitlab.k3d.local:8181/root/${GITLAB_REPO}.git 
