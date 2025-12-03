@@ -73,7 +73,7 @@ We can test our component with basic commands as `kubectl get nodes` or `kubectl
 Our differents apps are availables to the following adresses:
 - http://app1.com
 - http://app2.com
-- http://app3.com or http://192.168.56.110 (because it's or default app)
+- http://app3.com or http://192.168.56.110 (because it's our default app)
 
 ---
 ### 🐙 Part 3 - K3D and Argo CD
@@ -88,17 +88,17 @@ After adding our [resources repository](https://github.com/aauberti/IoT-Manifest
 #### How to test it
 We can check the component defined in the `argocd` and `dev` namespaces with `kubectl get pods -n <namespace>`.
 After we made a port-forwarding with `kubectl port-forward deployment/wil -n dev 8888:8888` we can access our app at `http://localhost:8888`.
-If we try modify our image version on our manifets, we can connect to ArgoCd (`https://localhost:8080`) with `admin:Qwert12345` and saw our app is synch.
+If we try modify our image version on our manifets, we can connect to ArgoCd (`https://localhost:8080`) with `admin:Qwerty12345` and saw our app is sync.
 
 ---
 ### 🦊 Bonus Part - K3s and Gitlab
 This Bonus part is dedicated to create our own GitLab local server and sync ArgoCD to this new server instead of the original github repository.
 
-For convenience we choose to use Helm as a GitLab package manager. Its charts are simple, but the main default is the number of pods created by Helm. It's a small student project and most of the pods created by Helm are unused here... Our `gitlab-values.yaml` defined default and minimal values to our server to be faster as possible (🏁 **Record is about 4min20s**).
+For convenience we chose to use Helm as a GitLab package manager. Its charts are simple, but the main default behaviour is the number of pods created by Helm. It's a small student project and most of the pods created by Helm are unused here... Our `gitlab-values.yaml` defines default and minimal values for our server to be as fast as possible (🏁 **Record is about 4min20s**).
 
 #### How to test it
 We can check the components defined in the `argocd`, `dev` and `gitlab` namespaces with `kubectl get pods -n <namespace>`.
-The test manipulation is identical to the part3, we need to connect to the `http://gitlab.k3d.local:8181` address with `admin:<gitlab-password.txt>` (the password is generated and stocked on the file at the root repository).
+The test manipulation is identical to the part3, we need to connect to the `http://gitlab.k3d.local:8181` address with `admin:<gitlab-password.txt>` (the password is generated and stored in the file at the root repository).
 
 ---
 ## 📚 Sources
