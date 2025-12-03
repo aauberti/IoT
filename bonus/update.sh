@@ -20,8 +20,7 @@ git clone https://github.com/aauberti/IoT-Manifest_p3
 ## Create repo and move inside
 mkdir $GITLAB_REPO && cd $GITLAB_REPO
 cp ../IoT-Manifest_p3/*.yaml .
-git config --global init.defaultBranch main
-git init
+git init --initial-branch=main
 git config user.email "admin@k3d.local"
 git config user.name "Administrator"
 git add .
