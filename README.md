@@ -52,7 +52,7 @@ We provision our VM with two differents scripts:
 - A `worker.sh`: launching K3s as a worker node with the server token and the correct IP address.
 
 #### How to test it
-We can test our machine with a `vagrant ssh` connection and a `kubectl get nodes -o wide` command to list our components on the Server one and `sudo systemctl status kubelet` on the worker one.
+We can test our machine with a `vagrant ssh` connection and a `kubectl get nodes -o wide` command to list our components on the Server one and `sudo systemctl status k3s-agent` on the worker one.
 
 ---
 ### ☸️ Part 2 - k3s and three simple applications
