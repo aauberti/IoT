@@ -98,7 +98,7 @@ For convenience we chose to use Helm as a GitLab package manager. Its charts are
 
 #### How to test it
 We can check the components defined in the `argocd`, `dev` and `gitlab` namespaces with `kubectl get pods -n <namespace>`.
-The test manipulation is identical to the part3, we need to connect to the `http://gitlab.k3d.local:8181` address with `admin:<gitlab-password.txt>` (the password is generated and stored in the file at the root repository).
+The test manipulation is identical to the part3, we need to connect to the `http://gitlab.k3d.local:8181` address with `root:<gitlab-password.txt>` (the password is generated and stored in the file at the root repository).
 
 ---
 ## 📚 Sources
