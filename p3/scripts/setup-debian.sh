@@ -40,17 +40,30 @@ curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 echo -e "\n${BLUE}##########################"
 echo "## KUBECTL INSTALLATION ##"
 echo -e "##########################${RESET}\n"
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-rm kubectl
+
+CURRENT_VERSION=$(kubectl version --client | grep 'Client' | awk '{print $3}')
+MINIMAL_REQUIRED_VERSION="v1.35.0"
+if [ -z "$CURRENT_VERSION" ] || [ "$(printf "%s\n%s\n" "$MINIMAL_REQUIRED_VERSION" "$CURRENT_VERSION" | sort -V | tail -n1)" != "$MINIMAL_REQUIRED_VERSION" ]; then
+	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+	sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+	rm kubectl
+else
+	echo "kubectl already installed"
+fi
 
 ## ArgoCD Installation
 echo -e "\n${BLUE}#########################"
 echo "## ARGOCD INSTALLATION ##"
 echo -e "#########################${RESET}\n"
-curl -SL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
-rm argocd-linux-amd64
+CURRENT_VERSION=$(argocd version --client --short | awk '{print $2}' | cut -d+ -f1)
+MINIMAL_REQUIRED_VERSION="v3.2.6"
+if [ -z "$CURRENT_VERSION" ] || [ "$(printf "%s\n%s\n" "$MINIMAL_REQUIRED_VERSION" "$CURRENT_VERSION" | sort -V | tail -n1)" != "$MINIMAL_REQUIRED_VERSION" ]; then
+	curl -SL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+	sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+	rm argocd-linux-amd64
+else
+	echo "argocd already installed"
+fi
 
 ## Verification
 echo -e "\n${BLUE}########################"
