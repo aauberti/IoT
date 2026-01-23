@@ -37,6 +37,13 @@
         ├── setup-debian.sh
         └── start.sh
 ```
+### Dependencies
+The project is configured to run on a **Debian based linux distribution**.
+**Required on host machine:**
+- **Vagrant** (≥ 2.2.0) - Virtual machine management
+  - Installation: https://developer.hashicorp.com/vagrant/downloads
+- **VirtualBox** (≥ 6.1) - Virtualization provider
+  - Installation: https://www.virtualbox.org/wiki/Downloads
 
 ### 💻 Part 1 - K3s and Vagrant
 This first step is an Introduction to K3s and Vagrant with a two nodes clutser: A Server machine `antauberS` and a Worker `antauberSW`.
