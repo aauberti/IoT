@@ -2,7 +2,7 @@ global:
   hosts:
     domain: k3d.local
     https: false
-  
+
   ingress:
     class: traefik
     configureCertmanager: false
@@ -29,7 +29,7 @@ gitlab:
         limits:
           cpu: 200m
           memory: 200M  
-  
+
   sidekiq:
     minReplicas: 1
     maxReplicas: 1
