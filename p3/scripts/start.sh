@@ -2,7 +2,7 @@
 
 set -e
 
-BLUE="\e[1;34m"
+GREEN="\e[92m"
 RESET="\e[0m"
 BOLD="\033[1m"
 NORMAL="\033[0m"
@@ -55,7 +55,7 @@ until kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.da
 done
 PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 argocd login localhost:8080 --username admin --password "$PASSWORD" --insecure
-echo -e "\n${BLUE}You can login to Argo CD from: localhost:8080\nUse the folowing creadentials: ${BOLD}admin:$PASSWORD${NORMAL}${RESET}\n"
+echo -e "\n${GREEN}You can login to Argo CD from: localhost:8080\nUse the folowing creadentials: ${BOLD}admin:$PASSWORD${NORMAL}${RESET}\n"
 
 ## Add repo, create app and sync it
 argocd repo add https://github.com/k0d3K/IoT-Manifest_p3.git
@@ -63,4 +63,4 @@ argocd app create wil --repo https://github.com/k0d3K/IoT-Manifest_p3.git --path
 echo "Waiting for the wil app to be ready"
 argocd app wait wil --health --timeout 180
 
-echo -e "\n${BLUE}Wil app ready on: ${BOLD}localhost:8888${NORMAL}\n"
+echo -e "\n${GREEN}Wil app ready on: ${BOLD}localhost:8888${NORMAL}${RESET}\n"
