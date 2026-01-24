@@ -19,7 +19,7 @@ fi
 
 ## Create Inital k3d cluster
 k3d cluster create iot \
-  --port "8888:30088@loadbalancer"
+	--port "8888:30088@loadbalancer"
 
 ## Set namespaces
 kubectl create namespace argocd
@@ -57,4 +57,4 @@ argocd account update-password --current-password "$PASSWORD" --new-password "$N
 argocd repo add https://github.com/k0d3K/IoT-Manifest_p3.git
 argocd app create wil --repo https://github.com/k0d3K/IoT-Manifest_p3.git --path "./" --dest-server https://kubernetes.default.svc --dest-namespace dev --sync-policy automated
 echo "Waiting for the wil app to be ready"
-argocd app wait wil --health --timeout 1800
+argocd app wait wil --health --timeout 500
