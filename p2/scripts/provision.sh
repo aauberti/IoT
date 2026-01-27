@@ -33,4 +33,3 @@ echo ""
 EOF
 
 sudo chmod +x /etc/update-motd.d/99-custom
-

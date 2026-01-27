@@ -7,7 +7,6 @@ GITLAB_REPO="IoT-Manifest_bonus"
 GITLAB_PASSWORD=$(cat gitlab-password.txt)
 GITLAB_SERVICE_URL="http://gitlab-webservice-default.gitlab.svc.cluster.local:8181"
 
-
 ## Set port forwarding to gitlab
 echo "==> Starting GitLab port-forward..."
 pkill -f "kubectl port-forward svc/gitlab-webservice-default" || true
